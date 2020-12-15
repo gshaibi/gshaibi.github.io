@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://www.test.com/img/gauge-by-test.png');
+    xhr.onabort = (e) => console.log("GUY: onabort: ", e);
+    xhr.onerror = (e) => console.log("GUY: onerror: ", e);
+    xhr.onload = (e) => console.log("GUY: onload: ", e);
+    xhr.onloadend = (e) => console.log("GUY: onloadend: ", e);
+    xhr.onloadstart = (e) => console.log("GUY: onloadstart: ", e);
+    xhr.onprogress = (e) => console.log("GUY: onprogress: ", e);
+    xhr.onreadystatechange = (e) => console.log("GUY: onreadystatechange: ", e);
+    xhr.ontimeout = (e) => console.log("GUY: ontimeout: ", e);
+    xhr.send();
+  </script>
+</body>
+</html>

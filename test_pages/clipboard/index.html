@@ -1,0 +1,114 @@
+<html>
+  <head>
+  <script>
+    window.keyboardCopyCounter = 0;
+    let keyboardCopyOccured = false;
+
+    window.onload = function () {
+
+      var txtBox = document.getElementById('prevent_txt1');
+      txtBox.oncopy = function (e) {
+        e.preventDefault();
+        e.clipboardData.setData('text/plain', 'preventDefault');
+        e.clipboardData.setData('text/html', 'preventDefault');
+      }
+
+      var txtBox2 = document.getElementById('prevent_txt3');
+      txtBox2.oncut = function (e) {
+        e.preventDefault();
+        e.clipboardData.setData('text/plain', 'CutPreventDefault');
+        e.clipboardData.setData('text/html', 'CutPreventDefault');
+      }
+
+
+      // Event listener on keydown events that will detect CTRL+C/CTRL+X events
+      // and show them on the DOM to assert
+      document.addEventListener("keydown", function(event) {
+        // keyboardCopyOccured = event.metaKey && (event.keyCode === 67 || event.keyCode === 88);
+        keyboardCopyOccured = event.ctrlKey && (event.keyCode === 67 || event.keyCode === 88);
+      });
+
+      document.addEventListener("keyup", function(event) {
+        keyboardCopyOccured = false;
+      });
+
+      document.addEventListener("copy", onCopyCutEvent);
+      document.addEventListener("cut", onCopyCutEvent);
+  }
+
+  // Counting the number of copy/cut events that occured due to keyboard events
+  // The counter will be written in the keyboardData div.
+  function onCopyCutEvent() {
+    const div = document.getElementById("keyboardData");
+    const isCopiedDiv = document.getElementById("isCopied");
+    if (keyboardCopyOccured) {
+      ++window.keyboardCopyCounter;
+      keyboardCopyOccured = false;
+    }
+    div.innerHTML = window.keyboardCopyCounter;
+    isCopiedDiv.innerHTML = 'YESEYES';
+  }
+
+  function triggerClipboardEventInElement(element_id, action, isWithRange=false) {
+    const element = document.getElementById(element_id);
+    if (isWithRange) {
+      selectElementContents(element);
+    } else {
+      element.select();
+    }
+    document.execCommand(action);
+  }
+
+  function selectElementContents(el) {
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+}
+
+  </script>
+  </head>
+  <body>
+    <p> INPUTS </p>
+    <input type="text" value="COPYTHIS">
+    <input type="text" data-id='txt1' id='txt1'>
+    <input type="text" data-id='txt2' id='txt2' value="CUTTHIS">
+    <input type="text" data-id='txt3' id='txt3'>
+    <p> TEXTAREAS </p>
+    <textarea data-id='txtarea1' id='txtarea1' rows="2" cols="17">COPYTHIS</textarea>
+    <textarea data-id='txtarea2' id='txtarea2' rows="2" cols="17"></textarea>
+    <textarea data-id='txtarea3' id='txtarea3' rows="2" cols="17">CUTTHIS</textarea>
+    <textarea data-id='txtarea4' id='txtarea4' rows="2" cols="17"></textarea>
+    <p> Prevent Defaults </p>
+    <input type='text' data-id='prevent_txt1' id='prevent_txt1' value='TryToCopy'></input>
+    <input type='text' data-id='prevent_txt2' id='prevent_txt2'></input>
+    <br>
+    <input type='text' data-id='prevent_txt3' id='prevent_txt3' value='TryToCut'></input>
+    <input type='text' data-id='prevent_txt4' id='prevent_txt4'></input>
+
+    <p> Rich Text / Copy Link </p>
+    <iframe src="internet_links.html"></iframe>
+    <section data-id='richTextSection' id="richTextSection" contenteditable="true">
+      <div> Add rich text / copy link here: </div>
+    </section>
+    <br/>
+    <textarea data-id="textarea_cut_from_server" id="textarea_cut_from_server">CUTTHIS</textarea>
+    <button data-id="cutbtn" id="cutbtn" onClick="triggerClipboardEventInElement('textarea_cut_from_server', 'cut')" style="cursor: pointer;">Cut to clipboard</button>
+    <textarea data-id="text_cut_result" id="text_cut_result" rows="2" cols="17"></textarea>
+    <br/>
+    <textarea data-id="textarea_copy_from_server" id="textarea_copy_from_server">COPYTHIS</textarea>
+    <button data-id="copybtn" id="copybtn" onClick="triggerClipboardEventInElement('textarea_copy_from_server', 'copy')" style="cursor: pointer;">Copy to clipboard</button>
+    <textarea data-id="text_copy_result" id="text_copy_result"></textarea>
+    <br/>
+    <div data-id="sample_link_div" id="sample_link_div" contenteditable="true">
+      <a data-id="sample_link_a" id="sample_link_a" href="http://www.webex.com" target="">www.webex.com</a>
+    </div>
+    <div data-id="div_result_box" id="div_result_box" contenteditable="true">Paste link here: </div>
+    <button data-id="cutlinkbtn" id="cutlinkbtn" onClick="triggerClipboardEventInElement('sample_link_div', 'cut', true)" style="cursor: pointer;">Cut to clipboard</button>
+    <button data-id="copylinkbtn" id="copylinkbtn" onClick="triggerClipboardEventInElement('sample_link_div', 'copy', true)" style="cursor: pointer;">Copy to clipboard</button>
+    <div id='keyboardData'>0</div>
+    <div id='isCopied'>NONO</div>
+  </body>
+</html>
+

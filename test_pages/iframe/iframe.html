@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- <html lang="en"> -->
+
+<head>
+  <script type="text/javascript">
+    callWhenDocumentReady(function () {
+      var printIframe = document.getElementById("printIframe");
+      printIframe.src = "sample.pdf";
+      printIframe.onload = function () {
+        printIframe.contentWindow.print();
+      }
+    }, 10);
+
+    function callWhenDocumentReady(callback, tries) {
+      if (tries === 0) {
+        throw new Error('Retries exceeded when waiting for document to be ready');
+      }
+
+      if (!document.body) {
+        setTimeout(function () {
+          callWhenDocumentReady(callback, tries - 1);
+        }, 10);
+        return;
+      }
+
+      if (callback) {
+        callback();
+      }
+    }
+  </script>
+  <!-- <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embed pdf</title> -->
+</head>
+
+<body>
+  <iframe id="printIframe" src=""></script>
+</body>
+
+</html>
