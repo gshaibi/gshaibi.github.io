@@ -1,1 +1,1 @@
-[example] example link
+[link to Google!](http://google.com)
