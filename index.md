@@ -7,4 +7,4 @@
 [iframe](test_pages/iframe)\
 [youtube iframe](test_pages/youtube_iframe)\
 [Aviv](test_pages/aviv)\
-[Prevent default on Ctrl-P](test_pages/prevent_default_ctrl_p)\
+[Prevent default action on Ctrl-P](test_pages/prevent_default_ctrl_p)\
