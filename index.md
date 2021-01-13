@@ -5,6 +5,7 @@
 [clipboard](test_pages/clipboard)\
 [cors](test_pages/cors)\
 [iframe](test_pages/iframe)\
-[youtube iframe](test_pages/youtube_iframe)\
+[cross-origin iframes](test_pages/cross_origin_iframes)\
 [Aviv](test_pages/aviv)\
 [Prevent default action on Ctrl-P](test_pages/prevent_default_ctrl_p)\
+[Drawn elements](test_pages/drawn_elements)\

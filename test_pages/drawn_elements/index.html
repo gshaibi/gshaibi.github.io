@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script type="text/javascript">
+        function forceComposition() {
+          var button = document.getElementById("button");
+          button.style["background-color"] = "blue";
+        }
+
+        function drawBottomLine() {
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            var thickness = 20;
+
+            context.fillRect(0, canvas.height - thickness, canvas.width, canvas.height);
+        }
+    </script>
+  </head>
+  <body data-id='body' id='body' style="margin-top: 0px">
+    <div data-id="topbar" id="topbar" style="top: 0px; left: 0px; width: 100%; position: fixed;">
+    <button data-id="button" id="button" style="width: 100%; height: 30px" onclick="forceComposition()">Force composition</button>
+    <button style="width: 100%; height: 300px" onclick="drawBottomLine()">Draw bottom</button>
+    </div>
+    <canvas data-id="canvas" id="canvas" width="400" height="400">
+    </canvas>
+  </body>
+</html>
