@@ -1,5 +1,6 @@
 function openIframe() {
   const iframe = document.createElement('iframe');
+  iframe.name = "Example.com iframe";
   iframe.width = 400;
   iframe.height = 300;
   iframe.src = 'https://www.example.com';
@@ -8,6 +9,7 @@ function openIframe() {
 
 function openIframeWithDrag() {
   const iframe = document.createElement('iframe');
+  iframe.name = "Drag iframe";
   iframe.width = 400;
   iframe.height = 300;
   iframe.src = 'https://jsbin.com/hiqasek/edit?html,js,output';
@@ -24,6 +26,7 @@ function openIframeDifferentDomainWithDrawnElements() {
 
 function openLocalIframe() {
   const iframe = document.createElement('iframe');
+  iframe.name = "Local iframe";
   iframe.width = 400;
   iframe.height = 300;
   iframe.src = 'dog.html';
