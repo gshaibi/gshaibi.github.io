@@ -43,7 +43,7 @@ function openLocalIframe() {
 
 function openButtonIframe() {
   const iframe = document.createElement('iframe');
-  iframe.name = "Custom iframe";
+  iframe.name = "Custom iframe " + Math.random();
   iframe.width = 400;
   iframe.height = 300;
 
