@@ -40,3 +40,15 @@ function openLocalIframe() {
   iframe.src = 'dog.html';
   document.body.appendChild(iframe);
 }
+
+function openButtonIframe() {
+  const iframe = document.createElement('iframe');
+  iframe.name = "Custom iframe";
+  iframe.width = 400;
+  iframe.height = 300;
+
+  const iframe_url = document.getElementById("iframe_url").value;
+
+  iframe.src = iframe_url;
+  document.body.appendChild(iframe);
+}
