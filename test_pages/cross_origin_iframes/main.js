@@ -24,6 +24,14 @@ function openIframeDifferentDomainWithDrawnElements() {
   document.body.appendChild(iframe);
 }
 
+function openIframeDifferentDomainWithTextBox() {
+  const iframe = document.createElement('iframe');
+  iframe.width = 400;
+  iframe.height = 300;
+  iframe.src = 'https://w3c.github.io/uievents/tools/key-event-viewer.html';
+  document.body.appendChild(iframe);
+}
+
 function openLocalIframe() {
   const iframe = document.createElement('iframe');
   iframe.name = "Local iframe";
