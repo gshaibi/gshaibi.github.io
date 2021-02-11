@@ -9,4 +9,4 @@
 [Aviv](test_pages/aviv)\
 [Prevent default action on Ctrl-P](test_pages/prevent_default_ctrl_p)\
 [Drawn elements](test_pages/drawn_elements)\
-[Left Side Navigation](test_pages/left_side_nav)\
+[Left Side Navigation](test_pages/left_side_nav)
